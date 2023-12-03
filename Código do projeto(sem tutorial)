@@ -1,0 +1,250 @@
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def push(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        if self.head is not None:
+            self.head.prev = new_node
+        self.head = new_node
+
+    def pop(self):
+        if self.head is None:
+            return None
+        temp = self.head.data
+        self.head = self.head.next
+        if self.head is not None:
+            self.head.prev = None
+        return temp
+    
+    def search(self, key):
+        cur_node = self.head
+        while cur_node:
+            if cur_node.data == key:
+                return True
+            cur_node = cur_node.next
+        return False
+    
+    def insertion_sort(self):
+        if self.head is None:
+            return
+
+        current = self.head.next
+        while current is not None:
+            key = current
+            while key.prev is not None and key.data < key.prev.data:
+                key.prev.data, key.data = key.data, key.prev.data
+                key = key.prev
+            current = current.next
+
+    def display(self):
+        elements = []
+        cur_node = self.head
+        while cur_node:
+            elements.append(cur_node.data)
+            cur_node = cur_node.next
+        return elements
+
+
+#numeros para encher a pilha
+import random
+
+
+dificuldade = int(input('Selecione a dificuldade: 1,2 ou 3?'))
+
+tutorial = ('a fazer...')
+
+pergunta = input('Digite sim para ver o tutorial ou não para ignorar:')
+print('-------')
+
+if pergunta == 'sim':
+    print(tutorial)
+    continuar = input('digite ok para iniciar o jogo:')
+    #pass
+
+if pergunta == 'não':
+    pass
+
+if dificuldade == 1:
+    peso_minimo = 1
+    peso_máximo = 20
+if dificuldade == 2:
+    peso_minimo = 25
+    peso_máximo = 70
+if dificuldade == 3:
+    peso_minimo = 75
+    peso_máximo = 150
+    
+dll = DoublyLinkedList()
+dll.push(random.randint(peso_minimo,peso_máximo))
+dll.push(random.randint(peso_minimo,peso_máximo))
+dll.push(random.randint(peso_minimo,peso_máximo))
+dll.push(random.randint(peso_minimo,peso_máximo))
+#print(dll.display())  # Saída: [2, 4, 1, 3]
+
+pilha = dll.display()
+dll.insertion_sort()
+pilha_ordenada = dll.display()
+
+
+
+#-------------------------
+#sistema kg ou lb
+a = ['kg','lb']
+
+b = random.randint(0,1)
+
+c = random.randint(0,1)
+
+d = random.randint(0,1)
+
+e = random.randint(0,1)
+
+
+unidades_de_peso = []
+
+unidades_de_peso.append(a[b])
+unidades_de_peso.append(a[c])
+
+unidades_de_peso.append(a[d])
+
+unidades_de_peso.append(a[e])
+#------------------------
+
+
+#------------------------
+#conversor de pesos
+convertidos = [] #pesos convertidos de lb para kg
+lbs = [] #index de todos os pesos em libras
+pesosparaconverter = []
+kgs = [] #todo peso da pilha que não precisou ser convertido
+
+#encontra o index de todos os 'lb' em 'unidades_de_peso'
+for w in enumerate(unidades_de_peso): #w[0] = index w[1] = 'lb or kg'
+    if w[1] == 'lb':
+        lbs.append(w[0])
+        #usa o index acima para selecionar os pesos da pilha que devem ser convertidos para kg
+        pesosparaconverter.append(pilha[w[0]])
+        
+    #separa em uma lista todos os pesos que já estavam em kg
+    if w[1] == 'kg':
+        kgs.append(pilha[w[0]])
+
+#realiza a conversão de todos os pesos que estão em lb e manda pra uma lista
+for x in pesosparaconverter:
+    convertidos.append(round(x * 0.45359237,2))
+    #AQUI se a terceira casa decimal for igual ou maior que 5, o numero da casa anterior é incrementado em 1
+    #o programa transforma 13,607(30)lb em 13,61lb
+    #tranforma 15,875(35lb) em 15,88lb
+    
+
+#abaixo é imprimido os numeros da pilha todos convertidos para kilo(menos os que já estavam nessa unidade)
+#print(convertidos + kgs, 'o usuario deve inserir esses numeros ordenados')
+
+#o trabalho do jogador é converter todos os numeros da pilha original para kilos, ordenar os numeros depois de converter(vamos definir como ele deve ordenar)
+#feito a ordenação, deve inserir a sequencia obtida no programa que vai verificar se ele fez corretamente
+
+pilhaconvertida = (convertidos + kgs)
+#print(sorted(pilhaconvertida), 'jogador deve chegar nessa lista')
+
+#------------------------
+
+#aqui acontece a impressão da pilha inicial desordenada e com unidades de peso diferentes(seguindo a logica de pilha(FILO))
+for f,g in zip(pilha,unidades_de_peso):
+    print(f,g)
+    print('----')
+suporte = []
+listavazia = []
+#-----------------------
+
+
+if pilha != pilha_ordenada: #usa o insertion sort na pilha original para garantir que existem halteres nos lugares errados
+    
+    
+    suporte.append(float(input('insira o primeiro halter:')))
+    suporte.append(float(input('insira o segundo halter:')))
+    suporte.append(float(input('insira o terceiro halter:')))
+    suporte.append(float(input('insira o quarto halter:')))
+else:
+    print('alunos organizados') #isso aqui acontece quando os numeros já são gerados ordenados
+
+if suporte == sorted(pilhaconvertida): #suporte é uma lista que recebe os pesos inseridos pelo jogador
+    print('halteres convertidos e ordenados')
+    for h in suporte:
+        print(h,'kg')
+        print('----')
+    print('agora vamos atender os alunos...')
+    
+    #---------------------------
+    #alunos pedindo halteres
+    haltermaria = random.randint(peso_minimo,peso_máximo)
+    halterpedro = random.randint(peso_minimo,peso_máximo)
+    halterJoana = random.randint(peso_minimo,peso_máximo)
+    
+    unidade1 = random.randint(0,1)
+    unidade2 = random.randint(0,1)
+    unidade3 = random.randint(0,1)
+    
+    print('Maria:preciso de um peso com',haltermaria,a[unidade1])
+    print('Pedro:me traz o peso com',halterpedro,a[unidade2])
+    print('Joana:o halter com',halterJoana,a[unidade3],'tá livre?')
+    #agora o programa fará uma busca binária na pilha pelos
+    #pesos dos alunos, para comparar com suas respostas a eles
+    #---------------------------
+    
+    print('Responda os alunos')
+    
+    
+    respostas_computador = []
+    respostas_jogador = []
+    
+    respmaria = input('to_maria:')
+    respostas_jogador.append(respmaria)
+    
+    resppedro = input('to_Pedro:')
+    respostas_jogador.append(resppedro)
+    
+    respJoana = input('to_Joana:')
+    respostas_jogador.append(respJoana)
+    
+    if dll.search(haltermaria) == True and a[unidade1] == unidades_de_peso[pilha.index(haltermaria)]:
+        respostas_computador.append('sim')
+            
+        
+    else:
+        respostas_computador.append('não')
+        
+    if dll.search(halterpedro) == True and a[unidade2] == unidades_de_peso[pilha.index(halterpedro)]:
+        respostas_computador.append('não')
+        
+    else:
+        respostas_computador.append('não')
+        
+    if dll.search(halterJoana) == True and a[unidade3] == unidades_de_peso[pilha.index(halterJoana)]:
+        respostas_computador.append('sim')
+        
+    else:
+        respostas_computador.append('não')
+         
+        
+        
+    if respostas_computador == respostas_jogador:
+        print('Alunos satisfeitos...Fim de jogo,aperte F5')
+    else:
+        print('Alunos insatisfeitos...')
+    
+else:
+    print('Vamos de novo!,aperte F5')
+    
+
+
+
+
+
