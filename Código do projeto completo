@@ -247,7 +247,7 @@ if suporte == sorted(pilhaconvertida): #suporte é uma lista que recebe os pesos
         respostas_computador.append('não')
         
     if dll.search(halterpedro) == True and a[unidade2] == unidades_de_peso[pilha.index(halterpedro)]:
-        respostas_computador.append('não')
+        respostas_computador.append('sim')
         
     else:
         respostas_computador.append('não')
