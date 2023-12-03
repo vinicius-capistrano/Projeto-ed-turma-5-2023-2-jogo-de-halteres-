@@ -59,15 +59,36 @@ import random
 
 dificuldade = int(input('Selecione a dificuldade: 1,2 ou 3?'))
 
-tutorial = ('a fazer...')
+tutorial = ('Bem vindo ao empilha halter! aqui você é um professor de academia'
+            ' e seu trabalho é ordenar a pilha de halteres que os alunos deixam '
+            'bagunçada e atender quando pedem algum halter verificando se está'
+            ' disponível ou não para depois levar até eles.'
+            
+            '--------------alguns detalhes importantes:'
+            'os halteres devem ser inseridos em ordem crescente, começando pelo'
+            ' mais leve///'
+            'todos os halteres da pilha bagunçada que estejam na unidade libras'
+            '(lb) devem ser convertidos para kg, a seguir um exemplo de como deve'
+            ' ser realizado a conversão:34lb equivale a aproximadamente'
+            ' 15.422kg, porém para inserir no programa é preciso atentar para a'
+            ' terceira casa decimal, se o número for MENOR que 5 a SEGUNDA casa'
+            ' permanece igual, se for igual ou maior que 5 você deve somar 1'
+            ' ao número da SEGUNDA casa decimal, no nosso exemplo a TERCEIRA casa'
+            ' é menor que 5(2) então o número que você vai inserir é 15.42///'
+            'para inserir o número use ponto(.) não vírgula, é obrigatório inserir'
+            ' o número com duas casas decimais...regras da academia///'
+            'caso os alunos resolvam te ajudar, você verá a mensagem:alunos organizados,'
+            'quando ocorrer é só reiniciar o jogo.Lembre de responder os alunos com'
+            'sim ou não!')
 
-pergunta = input('Digite sim para ver o tutorial ou não para ignorar:')
+pergunta = input('Digite sim para ver as instruções ou não para ignorar:')
 print('-------')
 
 if pergunta == 'sim':
     print(tutorial)
     continuar = input('digite ok para iniciar o jogo:')
-    #pass
+    for z in range(22):
+        print('.')
 
 if pergunta == 'não':
     pass
@@ -180,6 +201,10 @@ if suporte == sorted(pilhaconvertida): #suporte é uma lista que recebe os pesos
     for h in suporte:
         print(h,'kg')
         print('----')
+    
+    for n in range(25):
+        print('.')
+    
     print('agora vamos atender os alunos...')
     
     #---------------------------
