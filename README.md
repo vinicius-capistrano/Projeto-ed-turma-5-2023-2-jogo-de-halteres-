@@ -19,7 +19,7 @@ a função de impressão serve para exibir no shell do ide a pilha desordenada p
 
 Instruções de execução:
 Para executar é só colar o código em algum ambiente de desenvolvimento(que execute código python 3.8 ou superior),
-o programa pode ser executado em qualquer ide(como vs code, thoony, py charm), é ideal configurar o ide de forma que fique visível somente 
+o programa pode ser executado em qualquer ide(como vs code, thonny, py charm), é ideal configurar o ide de forma que fique visível somente 
 o shell/terminal do ide de forma que o código não sejá vísivel durante o jogo , a visualização das instruções do jogo ficam melhor se 
 o shell preencher a maior parte da tela do computador, o jogo instrui apertar a tecla F5 para iniciar outra partida, mas é preciso 
 verificar se essa é a tecla do seu ide para rodar código, executar programas
@@ -29,7 +29,7 @@ Para que o jogo seja melhor aproveitado, é ideal jogar sem qualquer calculadora
 realize conversões entre pesos de unidades diferentes, no caso libras para kilogramas, você pode escolher seu método de conversão mas lembre que
 o número resultante da conversão deve ter três números depois da vírgula(8,618 por exemplo).
 Ao iniciar o jogador vai ver a pilha de pesos desordenados e com unidades diferentes(caso todas já estejam em kg é só ordenar), o jogador é instruido 
-a inserir os números convertidos na ordem do menor até o maior,lembrando dos detalhes importantes presentes nas intruções dentro do jogo, se o jogador
+a inserir os números convertidos na ordem do menor até o maior,lembrando dos detalhes importantes presentes nas instruções dentro do jogo, se o jogador
 inserir os números de forma correta vai passar pra fase 2 onde deve responder os pedidos de halteres feitos pelos alunos dentro do jogo, o desafio está em 
 lembrar se o número e a unidade do peso requisitadas estão presentes na pilha, se não lembrar pode verificar no shell a pilha original ou a que ele ordenou,
 deve responder os alunos com 'sim' ou 'não' para chegar ao fim do jogo.
